@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.10">
-    <world name="car_world">
+    <world name="drone_world">
         <physics name="1ms" type="ignored">
             <max_step_size>0.001</max_step_size>
             <real_time_factor>1.0</real_time_factor>
@@ -71,7 +71,7 @@
             <name>Table</name>
             <pose>0 0 0 0 0 0</pose>
             <uri>
-                model://reflective_table
+                https://fuel.gazebosim.org/1.0/OpenRobotics/models/Reflective table
             </uri>
         </include>
     </world>
