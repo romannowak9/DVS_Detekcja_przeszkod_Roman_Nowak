@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/roman/ros2_px4_offboard_example_ws/install/px4_offboard/lib/python3.10/site-packages",
+        "/home/roman/ros2_px4_offboard_example_ws/install/drone_sim/lib/python3.10/site-packages",
+        "/home/roman/ros2_px4_offboard_example_ws/install/px4_msgs/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/roman/ros2_px4_offboard_example_ws/install/px4_offboard/lib/python3.10/site-packages",
+        "/home/roman/ros2_px4_offboard_example_ws/install/drone_sim/lib/python3.10/site-packages",
+        "/home/roman/ros2_px4_offboard_example_ws/install/px4_msgs/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
