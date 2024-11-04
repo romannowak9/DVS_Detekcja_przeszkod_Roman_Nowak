@@ -7,6 +7,9 @@ import time
 
 # List of commands to run
 commands = [
+    # Run the python script to generating random obstacles
+    "python3 ~/Praca_inz/ros2_px4_ws/src/drone_sim/drone_sim/generate_obstacles.py",
+
     # Run the Micro XRCE-DDS Agent
     "MicroXRCEAgent udp4 -p 8888",
 
