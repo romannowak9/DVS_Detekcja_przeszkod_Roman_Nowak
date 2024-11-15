@@ -6,10 +6,10 @@ import random
 SDF_WORLD_PATH = "/home/roman/PX4-Autopilot/Tools/simulation/gz/worlds/"
 SDF_WORLD_NAME = "default.sdf"
 OBSTACLES = ["Pine Tree", "telephone_pole", "Metal Peg", "Wooden Peg"]
-MY_OBSTACLES = OBSTACLES[:1]
-NO_OBSTACLES = 17
-OBSTACLES_AREA = ((5, 30), (-6.5, 6.5))
-MIN_OBSTACLES_DISTANCE = 5
+MY_OBSTACLES = OBSTACLES[:1]  # Selecting obstacles
+NO_OBSTACLES = 14  # export GZ_SIM_RESOURCE_PATH=~/PX4-Autopilot/Tools/simulation/gz/models:~/PX4-Autopilot/Tools/simulation/gz/worlds
+OBSTACLES_AREA = ((12, 55), (-5, 5))
+MIN_OBSTACLES_DISTANCE = 4
 
 
 def obst_sdf_code(obstacle: str, pose: Tuple[float], rotation: float, name: str) -> str:
@@ -32,17 +32,16 @@ def main():
     for i in range(NO_OBSTACLES):
         pose = (random.uniform(OBSTACLES_AREA[0][0], OBSTACLES_AREA[0][1]), random.uniform(OBSTACLES_AREA[1][0], OBSTACLES_AREA[1][1]))
 
-        for prev_pose in positions:
-            dist = np.linalg.norm(np.subtract(prev_pose, pose))
-            if dist < MIN_OBSTACLES_DISTANCE:
-                pose = (random.uniform(OBSTACLES_AREA[0][0], OBSTACLES_AREA[0][1]), random.uniform(OBSTACLES_AREA[1][0], OBSTACLES_AREA[1][1]))
-            else:
-                break
+        dists = [np.linalg.norm(np.subtract(prev_pose, pose)) for prev_pose in positions]
+        while any([dist < MIN_OBSTACLES_DISTANCE for dist in dists]):
+            pose = (random.uniform(OBSTACLES_AREA[0][0], OBSTACLES_AREA[0][1]), random.uniform(OBSTACLES_AREA[1][0], OBSTACLES_AREA[1][1]))
+            dists = [np.linalg.norm(np.subtract(prev_pose, pose)) for prev_pose in positions]
 
         rotation = random.uniform(-np.pi, np.pi)
         obstacle = random.choice(MY_OBSTACLES)
 
         code = obst_sdf_code(obstacle, pose, rotation, f"obstacle_{i+1}")
+        positions.append(pose)
 
         code_lines.insert(-2, code)
 

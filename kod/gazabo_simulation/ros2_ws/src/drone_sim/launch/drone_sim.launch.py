@@ -70,8 +70,8 @@ def generate_launch_description():
         Node(
             package='drone_sim',
             namespace='drone_sim',
-            executable='velocity_control',
-            name='velocity'
+            executable='param_control',
+            name='parameter_control'
         ),
         Node(
             package='rviz2',

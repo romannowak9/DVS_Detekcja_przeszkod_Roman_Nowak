@@ -29,7 +29,7 @@ setup(
         'console_scripts': [
                 'offboard_control = drone_sim.offboard_control:main',
                 'visualizer = drone_sim.visualizer:main',
-                'velocity_control = drone_sim.velocity_control:main',
+                'param_control = drone_sim.param_control:main',
                 'control = drone_sim.control:main',
                 'processes = drone_sim.processes:main',
                 'dvs = drone_sim.dvs:main',
