@@ -347,8 +347,8 @@ class OffboardControl(Node):
             trajectory_msg.velocity[2] = self.velocity.z if self.controlled_param == ControlledParam.VELOCITY else float('nan')
             trajectory_msg.yawspeed = self.yaw_speed if self.controlled_param == ControlledParam.VELOCITY else float('nan')
             
-            trajectory_msg.position[0] = position_world_x if self.controlled_param == ControlledParam.POSITION else float('nan')
-            trajectory_msg.position[1] = position_world_y if self.controlled_param == ControlledParam.POSITION else float('nan')
+            trajectory_msg.position[0] = self.position.x if self.controlled_param == ControlledParam.POSITION else float('nan')
+            trajectory_msg.position[1] = self.position.y if self.controlled_param == ControlledParam.POSITION else float('nan')
             trajectory_msg.position[2] = self.position.z if self.controlled_param == ControlledParam.POSITION else float('nan')
             trajectory_msg.yaw = self.yaw_pos if self.controlled_param == ControlledParam.POSITION else float('nan')
 

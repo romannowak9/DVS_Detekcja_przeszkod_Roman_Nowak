@@ -93,10 +93,8 @@ def main():
     curr_drone_vel = procure_velocity_command("GoForward", curr_drone_vel, velocity_pub, param_pub)
 
     wait(15)
-    move_to_postion(10.0, 0.0, 2.5, euler_to_quaternion(0.0, 0.0, 0.0), position_pub, param_pub)  # Może tu trzeba dawać aktualną rotację drona? Nawet na pewno
+    move_to_postion(10.0, 0.0, 2.5, yaw_to_quaternion(np.pi / 2.0), position_pub, param_pub)  # Może tu trzeba dawać aktualną rotację drona? Nawet na pewno
 
-    # wait(10)
-    # move_to_postion(70.0, 0.0, 2.5, euler_to_quaternion(0.0, 0.0, 0.0), position_pub, param_pub)
 
 
 def procure_velocity_command(command: str, initial: List[float], pub: rclpy.publisher, param_pub: rclpy.publisher, speed: float = None) -> List[float]:
@@ -201,7 +199,7 @@ def quaternion_to_euler(quaternion: geometry_msgs.msg.Quaternion) -> List[float]
     return [roll, pitch, yaw]
 
 
-def euler_to_quaternion(roll: float, pitch: float, yaw: float) -> geometry_msgs.msg.Quaternion:
+def yaw_to_quaternion(yaw: float) -> geometry_msgs.msg.Quaternion:
     """
     Converts Euler angles (roll, pitch, yaw) to a quaternion.
 
@@ -214,6 +212,9 @@ def euler_to_quaternion(roll: float, pitch: float, yaw: float) -> geometry_msgs.
         Quaternion: The corresponding quaternion.
     """
     # Compute half angles
+    roll = 0.0
+    pitch = 0.0
+
     half_roll = roll / 2.0
     half_pitch = pitch / 2.0
     half_yaw = yaw / 2.0

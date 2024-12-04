@@ -1,10 +1,11 @@
-# Praca inżynierska - Roman Nowak
+# Projekt inżynierska - Roman Nowak
 ## System detekcji przeszkód z wykorzystaniem kamery zdarzeniowej
 
 Promotor: dr Tomasz Kryjak / mgr inż. Krzysztof Błachut
 
 Link do projektu na Overleaf:
 https://www.overleaf.com/read/vdfshvbztfcv#d6c1d8
+
 Część pisemna w Latex, wykonywana na bazie szablonu:
 https://www.overleaf.com/read/bwztjqvbrvys#158783
 
@@ -15,6 +16,7 @@ Całość należy skonfigurować tak jak pokazano w instrukcji zawartej w Readme
 Dodatkowo konieczne będzie:
 ```
 pip install numpy opencv-python empy==3.3.4
+GZ_SIM_RESOURCE_PATH=~/PX4-Autopilot/Tools/simulation/gz/models:~/PX4-Autopilot/Tools/simulation/gz/worlds
 ```
 ## Sposób użycia
 Po uruchomieniu nowego terminala

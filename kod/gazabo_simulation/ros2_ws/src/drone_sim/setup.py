@@ -7,7 +7,7 @@ package_name = 'drone_sim'
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name],
+    packages=[package_name, 'modules'],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -33,7 +33,7 @@ setup(
                 'control = drone_sim.control:main',
                 'processes = drone_sim.processes:main',
                 'dvs = drone_sim.dvs:main',
-                'dvs_display = drone_sim.dvs_display:main'
+                'dvs_detect = drone_sim.dvs_detect:main'
         ],
     },
 )

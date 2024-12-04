@@ -224,24 +224,9 @@
       <pose>70.0 0 3.5 0 0 0</pose>
     </include>
     <!-- Randomly generated obstacles -->
-    <!-- Number of obstacles = 18 -->
-    <include><uri>Pine Tree</uri><name>obstacle_1</name><pose>51.02397675510122 4.328549612936268 0 0 0 -2.2156523024789703</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_2</name><pose>27.01277188721319 -4.021232291214919 0 0 0 -1.9538955413649097</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_3</name><pose>32.456525010166985 1.793623189758808 0 0 0 -1.6282214385380755</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_4</name><pose>40.73306697253814 1.6818024498353417 0 0 0 0.9064460057247885</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_5</name><pose>33.116776930233385 -3.119772857579699 0 0 0 2.6854199784747346</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_6</name><pose>20.365225881316046 -2.4744852081967905 0 0 0 2.4072977957687822</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_7</name><pose>15.744921428062984 -2.50424074276399 0 0 0 -1.9873957099725823</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_8</name><pose>53.889558638480935 -2.791403721422978 0 0 0 -2.880659471145903</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_9</name><pose>37.2538881863914 3.872561088290361 0 0 0 -0.24275343117274772</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_10</name><pose>38.946457643116474 -3.492035391643229 0 0 0 1.3966062212377457</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_11</name><pose>21.07263349495076 2.375852073788903 0 0 0 0.4239226973845538</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_12</name><pose>25.53752424124218 4.102141468798825 0 0 0 0.8536488813246761</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_13</name><pose>43.885524455672176 4.9627085292597055 0 0 0 -0.5431594192595801</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_14</name><pose>13.071574890329204 4.55089257242779 0 0 0 0.3677864698790825</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_15</name><pose>45.617502459179484 -2.3281627615232914 0 0 0 -1.0960417190460015</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_16</name><pose>28.457115722562992 1.3405855819036034 0 0 0 2.6234153712648496</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_17</name><pose>49.678512847574964 -1.0080202345311595 0 0 0 -1.0595407133261436</pose></include>
-    <include><uri>Pine Tree</uri><name>obstacle_18</name><pose>24.843246225840282 -0.46232431538729557 0 0 0 -2.2676429135318896</pose></include>
+    <!-- Number of obstacles = 3 -->
+    <include><uri>Pine Tree</uri><name>obstacle_1</name><pose>27.822287834821523 1.4717252244141523 0 0 0 -0.04714957767291317</pose></include>
+    <include><uri>Pine Tree</uri><name>obstacle_2</name><pose>18.687250191452446 4.80049809866828 0 0 0 1.5130625344345932</pose></include>
+    <include><uri>Pine Tree</uri><name>obstacle_3</name><pose>29.27100000832957 -4.426049223782774 0 0 0 0.42729338129934247</pose></include>
   </world>
 </sdf>

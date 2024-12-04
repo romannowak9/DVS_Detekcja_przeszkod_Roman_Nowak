@@ -89,7 +89,7 @@ def generate_launch_description():
         Node(
             package='drone_sim',
             namespace='drone_sim',
-            executable='dvs_display',
-            name='dvs_display'
+            executable='dvs_detect',
+            name='dvs_detect'
         )
     ])
