@@ -1,3 +1,4 @@
+#!/home/roman/anaconda3/envs/v2e/bin/python
 import gz.transport13
 import geometry_msgs.msg
 import rclpy
@@ -11,6 +12,8 @@ import gz
 from gz.msgs10.clock_pb2 import Clock
 
 from typing import List
+
+# TODO; Trochę to uprościć, bo jest głupia kalka strzałek i zrobić komendę stop
 
 
 class GazeboSimNode(gz.transport13.Node):
@@ -90,10 +93,28 @@ def main():
 
     wait(3)
     curr_drone_vel = procure_velocity_command("GoDown", curr_drone_vel, velocity_pub, param_pub)
-    curr_drone_vel = procure_velocity_command("GoForward", curr_drone_vel, velocity_pub, param_pub)
 
-    wait(15)
-    move_to_postion(10.0, 0.0, 2.5, yaw_to_quaternion(np.pi / 2.0), position_pub, param_pub)  # Może tu trzeba dawać aktualną rotację drona? Nawet na pewno
+    while True:
+        procure_velocity_command("GoForward", curr_drone_vel, velocity_pub, param_pub, speed = 2)
+        wait(3)
+    # curr_drone_vel = procure_velocity_command("GoForward", curr_drone_vel, velocity_pub, param_pub, speed = 2)
+
+    # wait(15)
+    # curr_drone_vel = procure_velocity_command("GoBackward", curr_drone_vel, velocity_pub, param_pub, speed = 2)
+    # curr_drone_vel = procure_velocity_command("GoRight", curr_drone_vel, velocity_pub, param_pub)
+    # wait(1)
+    
+    # while True:
+    #     curr_drone_vel = procure_velocity_command("GoLeft", curr_drone_vel, velocity_pub, param_pub)
+    #     curr_drone_vel = procure_velocity_command("GoLeft", curr_drone_vel, velocity_pub, param_pub)
+    #     wait(2)
+    #     curr_drone_vel = procure_velocity_command("GoRight", curr_drone_vel, velocity_pub, param_pub)
+    #     curr_drone_vel = procure_velocity_command("GoRight", curr_drone_vel, velocity_pub, param_pub)
+    #     wait(2)
+
+
+    # wait(15)
+    # move_to_postion(10.0, 0.0, 2.5, yaw_to_quaternion(np.pi / 2.0), position_pub, param_pub)  # Może tu trzeba dawać aktualną rotację drona? Nawet na pewno
 
 
 

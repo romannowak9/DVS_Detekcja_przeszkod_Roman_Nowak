@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/home/roman/anaconda3/envs/v2e/bin/python
 ############################################################################
 #
 #   Copyright (C) 2022 PX4 Development Team. All rights reserved.
@@ -80,12 +80,12 @@ def generate_launch_description():
             name='rviz2',
             arguments=['-d', [os.path.join(package_dir, 'visualize.rviz')]]
         ),
-        Node(
-            package='drone_sim',
-            namespace='drone_sim',
-            executable='dvs',
-            name='dvs'
-        ),
+        # Node(
+        #     package='drone_sim',
+        #     namespace='drone_sim',
+        #     executable='dvs',
+        #     name='dvs'
+        # ),
         Node(
             package='drone_sim',
             namespace='drone_sim',
