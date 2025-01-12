@@ -12,10 +12,13 @@
 
 % dodatkowe pakiety
 
+\usepackage{float}
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{siunitx}
+%\usepackage{caption}
 
 % \usepackage{tabularx}
 
@@ -134,13 +137,13 @@ backend=bibtex
 \thesistype{Projekt dyplomowy}
 %\thesistype{Master of Science Thesis}
 
-\supervisor{dr Tomasz Kryjak}
+\supervisor{dr inż. Tomasz Kryjak}
 %\supervisor{Paweł Kłeczek, PhD}
 
 \degreeprogramme{Automatyka i Robotyka}
 %\degreeprogramme{Automatics and Robotics}
 
-\date{2024}
+\date{2025}
 
 %\department{Katedra Informatyki Stosowanej}
 %\department{Department of Applied Computer Science}
@@ -148,7 +151,7 @@ backend=bibtex
 \faculty{Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej}
 %\faculty{Faculty of Electrical Engineering, Automatics, Computer Science and Biomedical Engineering}
 
-\acknowledgements{Serdecznie dziękuję \dots tu ciąg dalszych podziękowań np. dla promotora, żony, sąsiada itp.}
+%\acknowledgements{Serdecznie dziękuję \dots tu ciąg dalszych podziękowań np. dla promotora, żony, sąsiada itp.}
 
 \setlength{\cftsecnumwidth}{10mm}
 
@@ -180,17 +183,19 @@ backend=bibtex
     }
 
     \include{abstract}
-    
     \setcounter{tocdepth}{2}
     \tableofcontents
     \clearpage
     
     \include{wprowadzenie}
     \include{wstep}
-        \include{kamera}
-    \include{algorytm}
-        \include{symulacja}
-        \include{fpga}
+    \include{literatura}
+        
+        \include{symulacja_gazebo}
+        \include{algorytm}
+        % \include{implementacja}
+        \include{wyniki}
+        
     \include{podsumowanie}
     
     % itd.
@@ -199,5 +204,9 @@ backend=bibtex
     % \include{dodatekB}
     % itd.
     \printbibliography
+
+    Kod projektu oraz inne pliki są dostępne w~repozytorium: 
+    
+    \url{https://github.com/romannowak9/DVS_Detekcja_przeszkod_Roman_Nowak}
 
 \end{document}

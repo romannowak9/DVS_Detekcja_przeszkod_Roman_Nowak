@@ -55,7 +55,7 @@ def test_detection(json_file_path, filter_t=1/200, filter_k=5, filter_size=5, fr
                                 #    rht_min_point_dist=0.5,
                                    dbscan_eps=20,
                                    dbscan_min_samples=25,
-                                   save_org_events=False,
+                                   save_org_events=True,
                                    save_obstacles_img=True)
 
     for event_array in event_arrays:
@@ -67,19 +67,21 @@ def test_detection(json_file_path, filter_t=1/200, filter_k=5, filter_size=5, fr
 
         if filtered_frame is not None:
             cv2.imshow("filtered_events", filtered_frame)
-            cv2.waitKey(0)
+            cv2.waitKey(1)
 
         unfiltered_frame = detector.get_unfiltered_frame()
 
         if unfiltered_frame is not None:
             cv2.imshow("unfiltered_events", unfiltered_frame)
-            cv2.waitKey(0)
+            cv2.waitKey(1)
 
         obstacles_img = detector.get_obstacles_img()
 
         if obstacles_img is not None:
             cv2.imshow("obstacles_img", obstacles_img)
-            cv2.waitKey(0)
+            cv2.waitKey(1)
+
+        cv2.waitKey(0)
 
         # events = detector.get_filtered_events()
         # events = np.array(events)[:, :3]

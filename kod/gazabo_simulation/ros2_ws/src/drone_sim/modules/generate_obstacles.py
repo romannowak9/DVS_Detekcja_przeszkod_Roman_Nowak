@@ -8,7 +8,7 @@ SDF_WORLD_NAME = "default.sdf"
 OBSTACLES = ["Pine Tree", "telephone_pole", "Metal Peg", "Wooden Peg"]
 MY_OBSTACLES = OBSTACLES[:1]  # Selecting obstacles
 NO_OBSTACLES = 5  # export GZ_SIM_RESOURCE_PATH=~/PX4-Autopilot/Tools/simulation/gz/models:~/PX4-Autopilot/Tools/simulation/gz/worlds
-OBSTACLES_AREA = ((12, 55), (-5, 5))
+OBSTACLES_AREA = ((12, 55), (-8, 8))
 MIN_OBSTACLES_DISTANCE = 4
 
 

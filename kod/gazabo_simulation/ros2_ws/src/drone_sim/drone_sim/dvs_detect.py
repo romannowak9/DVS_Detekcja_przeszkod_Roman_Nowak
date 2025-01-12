@@ -34,13 +34,13 @@ import torch
 EVENTS_FRAME_RATE = 24
 
 # Detector parameters
-FRAME_EVENTS_N = 1000
+FRAME_EVENTS_N = 1500
 UNFILTERED_FRAMES = True
 SHOW_OBSTACLES = True
 
 # Detector filter parameters
 FILTER_T = 1/60
-FILTER_K = 2
+FILTER_K = 3
 FILTER_SIZE = 3
 
 # Detector RHT parameters
@@ -52,12 +52,12 @@ FILTER_SIZE = 3
 # MIN_POINT_DIST = 0.5
 
 # Detector obstacles detection parameters
-DBSCAN_EPS = 10
-DBSCAN_MIN_SAMPLES = 35
+DBSCAN_EPS = 5 # dla statycznej 7
+DBSCAN_MIN_SAMPLES = 30
 
 # Gazebo parameters
-REAL_TIME_FACTOR = 0.5
-CAMERA_FRAME_RATE = 60
+REAL_TIME_FACTOR = 0.2
+CAMERA_FRAME_RATE = 100
 
 
 class DvsNode(GzNode):
@@ -73,6 +73,7 @@ class DvsNode(GzNode):
         self.__ros2_node = Node("dvs_detect_node")
 
         self.__curr_frame = None
+        self.__curr_frame_rgb = None
         self.__start_time = self.__ros2_node.get_clock().now().nanoseconds  # nanosec
         self.__sim_time = None  # nanosec
         self.__gz_sim_time = None
@@ -88,7 +89,7 @@ class DvsNode(GzNode):
         #         device="cuda")
         
         # TODO: Tu może warto zrobić tak, że ograniczamy się do np. 30 FPS i polegamy na interpolacji klatek - tylko trzeba sprawdzić ile interpoluje
-        self.__emulator = EventEmulator(shot_noise_rate_hz=0.2)
+        self.__emulator = EventEmulator(shot_noise_rate_hz=0.35, leak_rate_hz=0.2)
         
         camera_topic = "/camera"
         # events_topic = "/dvs/events"
@@ -155,8 +156,8 @@ class DvsNode(GzNode):
                                                   draw_matches=True)
 
         input_data = np.frombuffer(msg.data, dtype=np.uint8)  # może będzie trochę szybsze
-        current_frame_rgb = input_data.reshape([msg.height, msg.width, 3])
-        self.__curr_frame = cv2.cvtColor(current_frame_rgb, cv2.COLOR_RGB2GRAY)
+        self.__curr_frame_rgb = input_data.reshape([msg.height, msg.width, 3])
+        self.__curr_frame = cv2.cvtColor(self.__curr_frame_rgb, cv2.COLOR_RGB2GRAY)
 
         self.__sim_time = (self.__ros2_node.get_clock().now().nanoseconds - self.__start_time) * REAL_TIME_FACTOR # nanoseconds
 
@@ -195,21 +196,43 @@ class DvsNode(GzNode):
             filtered_frame = self.__detector.get_filtered_frame()
             
             # Displaying in separate with cv2
-            if filtered_frame is not None:
-                cv2.imshow("filtered_events", filtered_frame)
-                cv2.waitKey(1)
+            # if self.__curr_frame is not None:
+            #     cv2.imshow("camera", self.__curr_frame)
+            #     cv2.waitKey(1)
+
+            # if filtered_frame is not None:
+            #     cv2.imshow("filtered_events", filtered_frame)
+            #     cv2.waitKey(1)
 
             unfiltered_frame = self.__detector.get_unfiltered_frame()
 
-            if unfiltered_frame is not None:
-                cv2.imshow("unfiltered_events", unfiltered_frame)
-                cv2.waitKey(1)
+            # if unfiltered_frame is not None:
+            #     cv2.imshow("unfiltered_events", unfiltered_frame)
+            #     cv2.waitKey(1)
 
             obstacles_img = self.__detector.get_obstacles_img()
 
-            if obstacles_img is not None:
-                cv2.imshow("obstacles_img", obstacles_img)
+            # if obstacles_img is not None:
+            #     cv2.imshow("obstacles_img", obstacles_img)
+            #     cv2.waitKey(1)
+
+            if self.__curr_frame_rgb is not None and filtered_frame is not None and unfiltered_frame is not None and obstacles_img is not None:
+                
+                gap_width = 20
+
+                height, _, _ = self.__curr_frame_rgb.shape
+                white_gap = np.full((height, gap_width, 3), 255, dtype=np.uint8)
+
+                row_with_gaps = cv2.hconcat([cv2.cvtColor(self.__curr_frame_rgb, cv2.COLOR_RGB2BGR), white_gap,
+                                             cv2.cvtColor(unfiltered_frame, cv2.COLOR_GRAY2BGR), white_gap,
+                                             cv2.cvtColor(filtered_frame, cv2.COLOR_GRAY2BGR), white_gap,
+                                             obstacles_img])
+
+                cv2.imshow("images", row_with_gaps)
                 cv2.waitKey(1)
+
+            
+
 
         # Publishing event frame
         # frame_msg = Image()

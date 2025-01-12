@@ -197,7 +197,6 @@ class DvsObstacleDetector():
 
     def new_event_frame(self):
         ''' Processing of filtered and sliced events from self.__to_frame_filtered_events '''
-        
         # RHT
 
         # events = np.array(self.__filtered_events)[:, :3]
@@ -377,15 +376,15 @@ class DvsObstacleDetector():
                 curr_matched_points = curr_matched_points[mask.ravel() == 1]
                 prev_matched_points = prev_matched_points[mask.ravel() == 1]
 
-                p3ds = []
-                for uv1, uv2 in zip(curr_matched_points.reshape(-1,2), prev_matched_points.reshape(-1,2)):
-                    _p3d = DvsObstacleDetector.DLT(curr_P, prev_P, uv1, uv2)
-                    p3ds.append(_p3d)
-                p3ds = np.array(p3ds)
+                # p3ds = []
+                # for uv1, uv2 in zip(curr_matched_points.reshape(-1,2), prev_matched_points.reshape(-1,2)):
+                #     _p3d = DvsObstacleDetector.DLT(curr_P, prev_P, uv1, uv2)
+                #     p3ds.append(_p3d)
+                # p3ds = np.array(p3ds)
 
-                print("DLT")
-                print(f"[{obstacle.obstacle_idx}] : dist = {np.min(p3ds)}")
-                print("distances:", p3ds)
+                # print("DLT")
+                # print(f"[{obstacle.obstacle_idx}] : dist = {np.min(p3ds)}")
+                # print("distances:", p3ds)
 
                 # Undistort to narmalize and prepare for triangulation
                 curr_matched_points = cv2.undistortPoints(curr_matched_points, K, dist)
@@ -416,15 +415,15 @@ class DvsObstacleDetector():
 
                 # print(f"[{obstacle.obstacle_idx}] : vel = {obstacle.v}")
 
-                p3ds = []
-                for uv1, uv2 in zip(curr_matched_points.reshape(-1,2), prev_matched_points.reshape(-1,2)):
-                    _p3d = DvsObstacleDetector.DLT(curr_P, prev_P, uv1, uv2)
-                    p3ds.append(_p3d)
-                p3ds = np.array(p3ds)
+                # p3ds = []
+                # for uv1, uv2 in zip(curr_matched_points.reshape(-1,2), prev_matched_points.reshape(-1,2)):
+                #     _p3d = DvsObstacleDetector.DLT(curr_P, prev_P, uv1, uv2)
+                #     p3ds.append(_p3d)
+                # p3ds = np.array(p3ds)
 
-                print("DLT Undistorted")
-                print(f"[{obstacle.obstacle_idx}] : dist = {np.min(p3ds)}")
-                print("distances:", p3ds)
+                # print("DLT Undistorted")
+                # print(f"[{obstacle.obstacle_idx}] : dist = {np.min(p3ds)}")
+                # print("distances:", p3ds)
 
 
     @staticmethod
@@ -491,7 +490,7 @@ class DvsObstacleDetector():
             # I assume thet events are in ascending order by timestamps
             max = events[-1][event_field['ts']]  # ts
                     
-            for event in event:
+            for event in events:
                 image[int(event[event_field['y']]), int(event[event_field['x']])] = (event[event_field['polarity']] * 
                                         np.exp(- np.abs(max - event[event_field['ts']]) / delta_t) + 1) * (255/2)
 
@@ -526,7 +525,9 @@ class DvsObstacleDetector():
         '''
         Receiving a new sigle event in format [timestamp: float, x :int, y: int, polarity: int]
         '''
-
+        if isinstance(event, tuple):
+            event = list(event)
+            
         event[1] = int(event[1])
         event[2] = int(event[2])
         event[3] = int(event[3])

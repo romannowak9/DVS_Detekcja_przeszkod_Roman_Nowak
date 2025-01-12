@@ -74,6 +74,7 @@ Opiekun pracy: & {\itshape \@supervisor}\\
 \fancyfoot[LE,RO]{\small \@shortauthor\quad\textit{\@shorttitleEN}}
 }
 
+
 \def\thesistable{
 \begin{tabular}{p{45mm}l}
 Author: & {\itshape \@author}\\[-1mm]
@@ -94,26 +95,27 @@ Supervisor: & {\itshape \@supervisor}\\
 
 \includegraphics[scale=0.6]{agh}
 
-\vspace*{2mm}
+\vspace*{5mm}
 
 {\sffamily{\large{\bfseries{\scshape Akademia G\'{o}rniczo-Hutnicza im. Stanis\l{}awa Staszica w Krakowie}}}
 
 \vspace*{1mm}
 
-{\small\bfseries \MakeUppercase{\@faculty}}}
-\vspace*{8mm}
+{\footnotesize\bfseries \MakeUppercase{\@faculty}}}
+\vspace*{12mm}
 
 
 {\sffamily\Large \@thesistype}
-\vspace*{9mm}
+\vspace*{12mm}
 
 {\sffamily\Large\itshape \@titlePL}
-\vspace*{1mm}
+\vspace*{4mm}
 
 {\sffamily\Large\itshape \@titleEN}
 \vspace{40mm}
 \end{center}
 
+\vfill
 \noindent
 {\sffamily
 \thesistable
@@ -133,19 +135,19 @@ Supervisor: & {\itshape \@supervisor}\\
 
 \clearpage \titlepage
 
-\vspace*{15cm} \vfill
-\begin{flushright} 
-\begin{minipage}[!h]{10cm}
-{\Large\itshape \@acknowledgements}
-\end{minipage}
-\end{flushright}
+% \vspace*{15cm} \vfill
+% \begin{flushright} 
+% \begin{minipage}[!h]{10cm}
+% {\Large\itshape \@acknowledgements}
+% \end{minipage}
+% \end{flushright}
 
 \clearpage
 \thispagestyle{empty}
 \vspace*{15cm} \vfill
 \clearpage
 
-\setcounter{page}{5}
+\setcounter{page}{3}
 
 }
 

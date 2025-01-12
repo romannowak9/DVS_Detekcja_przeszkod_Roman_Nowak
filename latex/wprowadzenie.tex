@@ -1,18 +1,84 @@
 \chapter{Wprowadzenie}
 \label{cha:wprowadzenie}
 
+Autonomiczne sterowanie pojazdami jest współcześnie szeroko rozwijanym i~wykorzystywanym zagadnieniem. Realizacja takiego samodzielnego sterowania wymaga integracji precyzyjnego systemu. Jednym z~jego kluczowych elementów, zapewniających skuteczność i~bezpieczeństwo działania, jest system detekcji przeszkód. Może on być stworzony na różne sposoby, dzięki zastosowaniu kilku typów czujników. Częstym rozwiązaniem jest użycie kamer lub LiDAR-u (ang. \textit{Light Detection and Ranging}). Obiecującym, nowoczesnym czujnikiem jest kamera zdarzeniowa, której wykorzystanie pozwala na osiągnięcie wymiernych korzyści. Wymaga to jednak opracowania algorytmów dostosowanych do działania tego czujnika, przykładowo do detekcji przeszkód na trasie ruchu autonomicznego pojazdu. %Celem pracy (\ref{sec:celePracy}) jest zaprojektowanie i~implementacja algorytmu detekcji przeszkód przeznaczonego do pracy na danych z~kamery zdarzeniowej.
+
+Kamery zdarzeniowe to nowoczesne czujniki, wykorzystywane w~systemach wizyjnych. Słowo ,,kamera'' może być mylące -- ich działanie znacznie różni się od tradycyjnych kamer. DVS (ang. \textit{Dynamic Vision Sensor}, czyli kamera zdarzeniowa) nie przechwytuje pełnych klatek obrazu. Jej sygnałem wyjściowym jest asynchroniczny strumień tzw. zdarzeń (ang. \textit{event}). %czyli zestawów danych, zawierających informację o zmianie stanu pojedynczego piksela, generowanych natychmiastowo z chwilą ich wystąpienia.
+Są one generowane asynchronicznie dla każdego piksela DVS w~wyniku zmiany jasności o~zadany próg. Zmiany jasności pikseli pojawiają się, jeżeli w polu widzenia wystąpił ruch lub zmieniło się oświetlenie sceny. DVS często można traktować jako czujnik rejestrujący poruszające się obiekty.
+
+
+
+% Każdy \textit{event} składa się z zestawu czterech danych:
+% \begin{itemize}
+%     \item położeniu piksela w polu widzenia DVS - numeru wiersza i kolumny;
+%     \item polaryzacji, czyli kierunku zmiany jasności;
+%     \item czasie wystąpienia zdarzenia.
+% \end{itemize}
+
+% Konsekwencją takiego sposobu działania jest to, że sygnał wyjściowy z kamery zdarzeniowej w~nieprzetworzonej formie nie może być wyświetlony jako obraz (choć istnieją proste metody jego wizualizacji (tzw. \textit{event frames})). Wynika z niego jednak szereg zalet i przewag nad tradycyjnymi kamerami.
+
+Sposób działania kamer zdarzeniowych sprawia, że dysponują one szeregiem istotnych przewag nad tradycyjnymi kamerami:
+\begin{itemize}
+    \item Wysoka rozdzielczość czasowa, czyli częstotliwość, z~jaką generowane są dane, dzięki temu w~danych z~kamery zdarzeniowej nie występuje rozmycie ruchu,
+    \item Niska latencja, co pozwala na dostarczanie dokładnych danych nawet o~szybko poruszających się obiektach,
+    \item Niskie zużycie energii,
+    \item Szeroka rozpiętość tonalna (ang. \textit{high dynamic range}), czyli zdolność do rejestracji zdarzeń w~scenie o~bardzo dużych różnicach w~natężeniu światła,
+    \item Wysoka czułość na występowanie zmian jasności pikseli.
+\end{itemize}
+
+\vspace{11px}
+Na wady i~ograniczenia kamer zdarzeniowych składają się:
+\begin{itemize}
+    \item Wrażliwość na występowanie szumu, czyli generowania fałszywych zdarzeń,
+    \item Nietypowe dane wyjściowe -- do ich przetwarzania wymagane są specjalistyczne algorytmy,
+    \item Brak zdolności do rejestracji statycznych obiektów,
+    \item Wysoka cena.
+\end{itemize}
+
+Wspomniane cechy tworzą z~kamer zdarzeniowych bardzo dobry czujnik do wykorzystania wszędzie tam, gdzie występują szybko poruszające się obiekty, lub gdy mamy do czynienia z~ograniczonym lub zmiennym oświetleniem.
+Wykorzystywane są w~systemach wizyjnych samochodów, a~także robotów mobilnych i~dronów. Dzięki zastosowaniu DVS można tworzyć dla nich wydajne i~efektywne systemy percepcji.
+
+%\vspace{11px}
+
+Zaprojektowanie systemu detekcji przeszkód, z~użyciem kamery zdarzeniowej, pozwala w~pełni wykorzystać jej zalety. Poprawnie zaimplementowany system detekcji potencjalnych zagrożeń staje się jednym z~podstawowych elementów robota mobilnego, umożliwiających jego autonomiczne sterowanie. Dzięki dostarczaniu możliwie aktualnych i~precyzyjnych danych o~przeszkodach, znajdujących się na ścieżce robota, zyskuje się możliwość jej korekty. W konsekwencji otrzymuje się kompletny, bezpieczny i~skuteczny system sterowania robotem mobilnym.
+
 %---------------------------------------------------------------------------
 
-\section{Cele pracy}
+
+\section{Cele projektu}
 \label{sec:celePracy}
 
+Celem projektu była realizacja systemu detekcji obiektów -- potencjalnych przeszkód dla robota mobilnego -- z~wykorzystaniem kamery zdarzeniowej. Czujnik ten powinien zapewnić poprawne działanie w różnych niekorzystnych warunkach oświetleniowych. Dodatkowym celem była próba implementacji zaprojektowanego systemu na platformie eGPU lub SoC FPGA.
 
-Tu krótko o celach projektu, kolejnych etapach, zamierzonym efekcie końcowym.
+\noindent Realizacja projektu została podzielona na kilka etapów:
+
+\vspace{12px}
+
+W \textbf{pierwszym} etapie należało wykonać przegląd literatury na temat detekcji obiektów z wykorzystaniem kamer zdarzeniowych i~na tej podstawie wybrać podejście do implementacji programowej.
+
+W \textbf{drugim} etapie, symulacji SiL (ang. \textit{Software-in-the-Loop}), należało wybrać symulator, narzędzie do realizacji oraz język programowania. Następnie w~symulacji powinien zostać umieszczony model robota (drona) wyposażonego w~kamerę zdarzeniową. Powinna zostać także zapewniona możliwość sterowania nim oraz tworzenia zróżnicowanych scen z~przeszkodami.
+%Następnie zrealizowany został model robota autonomicznego (drona), opanowane sterowanie, dodana kamera zdarzeniowa oraz stworzone środowisko z przeszkodami.
+Należało również opracować kilka scenariuszy testowych o różnym stopniu skomplikowania.
+
+Celem \textbf{trzeciego} etapu była implementacja algorytmu detekcji przeszkód i jego ewaluacja w stworzonym środowisku wraz z~oceną skuteczności oraz złożoności obliczeniowej.
+
+Celem \textbf{ostatniego} etapu projektu było przeniesienie systemu na wbudowaną platformę obliczeniową -- w pierwszej kolejności na eGPU Jetson, a w drugiej, opcjonalnej, na SoC FPGA. System należało przetestować w formie HiL (ang.\textit{ Hardware-in-the-Loop}). W tym celu konieczne było opracowanie sposobu wymiany danych pomiędzy środowiskiem symulacyjnym a platformą obliczeniową. Oczekiwanym rezultatem tego etapu była weryfikacja działania systemu i porównanie z modelem programowym. Dodatkowo, należało podjąć próbę uruchomienia rozwiązania na rzeczywistym pojeździe.
 
 
 %---------------------------------------------------------------------------
 
 \section{Zawartość pracy}
-
-Informacje o zawartości poszczególnych rozdziałów, wykorzystanej bibliografii itd.
 \label{sec:zawartoscPracy}
+
+Rozdział \textbf{drugi} (\ref{cha:wstep}) zawiera informacje teoretyczne, niezbędne do pełnego zrozumienia treści pracy. Opisano w~nim kamery zdarzeniowe, wbudowane platformy obliczeniowe oraz wyjaśniono pojęcia takie jak: ROS (ang. \textit{Robot Operating System}), \textit{Software in the Loop}, \textit{Hardware in the Loop} czy triangulacja.
+
+W~rozdziale \textbf{trzecim} pracy (\ref{cha:literatura}) przeprowadzono przegląd literatury. Przeanalizowano rozwiązania zastosowane w podobnych projektach.
+
+Rozdział \textbf{czwarty} (\ref{cha:symulacja}) to opis realizacji symulacji, stworzonej w celu testowania rozwijanego systemu. Zawarte są w~nim informacje o~przygotowaniu środowiska symulacyjnego oraz przedstawione i~opisane wyniki.
+
+W rozdziale \textbf{piątym} (\ref{cha:algorytm}) opisano zaprojektowany algorytm detekcji przeszkód. Wyjaśniono etapy jego działania.
+
+W rozdziale \textbf{szóstym} (\ref{cha:wyniki}) przedstawiono przeprowadzone w różnych scenariuszach testy systemu. Zaprezentowano i~oceniono ich wyniki.
+
+Rozdział \textbf{siódmy} (\ref{cha:podsumowanie}) zawiera podsumowanie całej pracy. Opisane są w~nim efekty i~wyniki. Na ich podstawie sformułowane są wnioski. Zdefiniowano również plany dalszego rozwoju stworzonego w~ramach pracy projektu.
+

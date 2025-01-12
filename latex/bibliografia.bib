@@ -1,69 +1,357 @@
 
-@Book{Lam92,
-author = {Lamport, L.},
-title = {LaTeX system przygotowywania dokumentów},
-publisher = {Wydawnictwo Ariel},
-year = {1992},
-address = {Kraków},
+@article{
+dynamic_obstacle,
+author = {Davide Falanga  and Kevin Kleber  and Davide Scaramuzza },
+title = {Dynamic obstacle avoidance for quadrotors with event cameras},
+journal = {Science Robotics},
+volume = {5},
+number = {40},
+pages = {eaaz9712},
+year = {2020},
+doi = {10.1126/scirobotics.aaz9712},
+URL = {https://www.science.org/doi/abs/10.1126/scirobotics.aaz9712},
+eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.aaz9712},
+abstract = {Micro-aerial vehicles dodge fast-moving objects using only onboard sensing and computation. Today’s autonomous drones have reaction times of tens of milliseconds, which is not enough for navigating fast in complex dynamic environments. To safely avoid fast moving objects, drones need low-latency sensors and algorithms. We departed from state-of-the-art approaches by using event cameras, which are bioinspired sensors with reaction times of microseconds. Our approach exploits the temporal information contained in the event stream to distinguish between static and dynamic objects and leverages a fast strategy to generate the motor commands necessary to avoid the approaching obstacles. Standard vision algorithms cannot be applied to event cameras because the output of these sensors is not images but a stream of asynchronous events that encode per-pixel intensity changes. Our resulting algorithm has an overall latency of only 3.5 milliseconds, which is sufficient for reliable detection and avoidance of fast-moving obstacles. We demonstrate the effectiveness of our approach on an autonomous quadrotor using only onboard sensing and computation. Our drone was capable of avoiding multiple obstacles of different sizes and shapes, at relative speeds up to 10 meters/second, both indoors and outdoors.}}
 
-langid = {polish},
+@article{EVDodge,
+  author       = {Nitin J. Sanket and
+                  Chethan M. Parameshwara and
+                  Chahat Deep Singh and
+                  Ashwin V. Kuruttukulam and
+                  Cornelia Ferm{\"{u}}ller and
+                  Davide Scaramuzza and
+                  Yiannis Aloimonos},
+  title        = {EVDodge: Embodied {AI} For High-Speed Dodging On {A} Quadrotor Using
+                  Event Cameras},
+  journal      = {CoRR},
+  volume       = {abs/1906.02919},
+  year         = {2019},
+  url          = {http://arxiv.org/abs/1906.02919},
+  eprinttype    = {arXiv},
+  eprint       = {1906.02919},
+  timestamp    = {Mon, 09 Nov 2020 15:07:11 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1906-02919.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@Book{Dil00,
-author = {Diller, A.},
-title = {LaTeX wiersz po wierszu},
-publisher = {Wydawnictwo Helion},
-year = {2000},
-address = {Gliwice},
-
-langid = {polish},
+@article{night_obstacle,
+  author       = {Jawad Naveed Yasin and
+                  Sherif Abdelmonem Sayed Mohamed and
+                  Mohammad Hashem Haghbayan and
+                  Jukka Heikkonen and
+                  Hannu Tenhunen and
+                  Muhammad Mehboob Yasin and
+                  Juha Plosila},
+  title        = {Night vision obstacle detection and avoidance based on Bio-Inspired
+                  Vision Sensors},
+  journal      = {CoRR},
+  volume       = {abs/2010.15509},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2010.15509},
+  eprinttype    = {arXiv},
+  eprint       = {2010.15509},
+  timestamp    = {Tue, 03 Nov 2020 11:44:23 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2010-15509.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-
-@Manual{ARM06,
-title = {Ada Reference Manual {ISO}/{IEC} 8652:200y({E}) {E}d. 3},
-organization = {Ada Europe},
-year = {2006}
+@article{detection_techniques,
+author = {Singh, Yadwinder and Kaur, Lakhwinder},
+year = {2017},
+month = {05},
+pages = {35-53},
+title = {Obstacle Detection Techniques in Outdoor Environment: Process, Study and Analysis},
+volume = {9},
+journal = {International Journal of Image, Graphics and Signal Processing},
+doi = {10.5815/ijigsp.2017.05.05}
 }
 
-@Article{BuDo03,
-author = {Burns, A. and Dobbing, B.},
-title = {The {R}avenscar {P}rofile for Real--Time and High Integrity Systems},
-journal = {Cross{T}alk},
-year = {2003},
-volume = {16},
-number = {11},
-pages = {9--12}
+@INPROCEEDINGS{detection_methods,
+
+  author={Ben Romdhane, Nadra and Hammami, Mohamed and Ben-Abdallah, Hanêne},
+
+  booktitle={2011 IEEE Intelligent Vehicles Symposium (IV)}, 
+
+  title={A generic obstacle detection method for collision avoidance}, 
+
+  year={2011},
+
+  volume={},
+
+  number={},
+
+  pages={491-496},
+
+  keywords={Roads;Pixel;Cameras;Vehicles;Image edge detection;Three dimensional displays;Sensors},
+
+  doi={10.1109/IVS.2011.5940503}}
+
+@article{RED,
+  author       = {Etienne Perot and
+                  Pierre de Tournemire and
+                  Davide Nitti and
+                  Jonathan Masci and
+                  Amos Sironi},
+  title        = {Learning to Detect Objects with a 1 Megapixel Event Camera},
+  journal      = {CoRR},
+  volume       = {abs/2009.13436},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2009.13436},
+  eprinttype    = {arXiv},
+  eprint       = {2009.13436},
+  timestamp    = {Wed, 30 Sep 2020 16:16:22 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2009-13436.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
+@ARTICLE{ASTMNet,
+  author={Li, Jianing and Li, Jia and Zhu, Lin and Xiang, Xijie and Huang, Tiejun and Tian, Yonghong},
+  journal={IEEE Transactions on Image Processing}, 
+  title={Asynchronous Spatio-Temporal Memory Network for Continuous Event-Based Object Detection}, 
+  year={2022},
+  volume={31},
+  number={},
+  pages={2975-2987},
+  keywords={Object detection;Cameras;Detectors;Task analysis;Streaming media;Recurrent neural networks;Meters;Object detection;event cameras;event-based vision;deep neural networks;neuromorphic engineering},
+  doi={10.1109/TIP.2022.3162962}}
 
+@misc{RVT,
+      title={Recurrent Vision Transformers for Object Detection with Event Cameras}, 
+      author={Mathias Gehrig and Davide Scaramuzza},
+      year={2023},
+      eprint={2212.05598},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2212.05598}, 
+}
 
-@InProceedings{PeDa04,
-author = {Peleska, J. and Große, D. and Haxthausen, A. E. and Drechsler, R.},
-title = {Automated Verification for Train Control Systems},
-booktitle = {Proc. of the 5th Symposium on Formal Methods for Automation and Safety in Railway and Automotive Systems (FORMS/FORMAT 2004)},
+@misc{DMANet,
+      title={Dual Memory Aggregation Network for Event-Based Object Detection with Learnable Representation}, 
+      author={Dongsheng Wang and Xu Jia and Yang Zhang and Xinyu Zhang and Yaoyuan Wang and Ziyang Zhang and Dong Wang and Huchuan Lu},
+      year={2023},
+      eprint={2303.09919},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2303.09919}, 
+}
+
+@misc{TEDNet,
+      title={Tracking-Assisted Object Detection with Event Cameras}, 
+      author={Ting-Kang Yen and Igor Morawski and Shusil Dangi and Kai He and Chung-Yi Lin and Jia-Fong Yeh and Hung-Ting Su and Winston Hsu},
+      year={2024},
+      eprint={2403.18330},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2403.18330}, 
+}
+
+@inproceedings{DBScan,
+author = {Ester, Martin and Kriegel, Hans-Peter and Sander, J\"{o}rg and Xu, Xiaowei},
+title = {A density-based algorithm for discovering clusters in large spatial databases with noise},
+year = {1996},
+publisher = {AAAI Press},
+abstract = {Clustering algorithms are attractive for the task of class identification in spatial databases. However, the application to large spatial databases rises the following requirements for clustering algorithms: minimal requirements of domain knowledge to determine the input parameters, discovery of clusters with arbitrary shape and good efficiency on large databases. The well-known clustering algorithms offer no solution to the combination of these requirements. In this paper, we present the new clustering algorithm DBSCAN relying on a density-based notion of clusters which is designed to discover clusters of arbitrary shape. DBSCAN requires only one input parameter and supports the user in determining an appropriate value for it. We performed an experimental evaluation of the effectiveness and efficiency of DBSCAN using synthetic data and real data of the SEQUOIA 2000 benchmark. The results of our experiments demonstrate that (1) DBSCAN is significantly more effective in discovering clusters of arbitrary shape than the well-known algorithm CLAR-ANS, and that (2) DBSCAN outperforms CLARANS by a factor of more than 100 in terms of efficiency.},
+booktitle = {Proceedings of the Second International Conference on Knowledge Discovery and Data Mining},
+pages = {226–231},
+numpages = {6},
+keywords = {handling nlj4-275oise, efficiency on large spatial databases, clustering algorithms, arbitrary shape of clusters},
+location = {Portland, Oregon},
+series = {KDD'96}
+}
+
+@article{Lucas-Kanade,
+author = {Baker, Simon and Matthews, Iain},
+title = {Lucas-Kanade 20 Years On: A Unifying Framework},
 year = {2004},
-pages = {252--265},
-address = {Braunschweig, Germany},
-month = {December}
+issue_date = {February-March 2004},
+publisher = {Kluwer Academic Publishers},
+address = {USA},
+volume = {56},
+number = {3},
+issn = {0920-5691},
+url = {https://doi.org/10.1023/B:VISI.0000011205.11775.fd},
+doi = {10.1023/B:VISI.0000011205.11775.fd},
+abstract = {Since the Lucas-Kanade algorithm was proposed in 1981 image alignment has become one of the most widely used techniques in computer vision. Applications range from optical flow and tracking to layered motion, mosaic construction, and face coding. Numerous algorithms have been proposed and a wide variety of extensions have been made to the original formulation. We present an overview of image alignment, describing most of the algorithms and their extensions in a consistent framework. We concentrate on the inverse compositional algorithm, an efficient algorithm that we recently proposed. We examine which of the extensions to Lucas-Kanade can be used with the inverse compositional algorithm without any significant loss of efficiency, and which cannot. In this paper, Part 1 in a series of papers, we cover the quantity approximated, the warp update rule, and the gradient descent approximation. In future papers, we will cover the choice of the error function, how to allow linear appearance variation, and how to impose priors on the parameters.},
+journal = {Int. J. Comput. Vision},
+month = feb,
+pages = {221–255},
+numpages = {35},
+keywords = {Gauss-Newton, Levenberg-Marquardt, Lucas-Kanade, Newton, a unifying framework, additive vs. compositional algorithms, efficiency, forwards vs. inverse algorithms, image alignment, steepest descent, the inverse compositional algorithm}
 }
 
-@TechReport{BuDoVa03,
-author = {Burns, A. and Dobbing, B. and Vardanega, T.},
-title = {Guide for the Use of the Ada Ravenscar Profile in High Integrity Systems},
-institution = {University of York},
-year = {2003},
-number = {YCS-2003-348}
+@inproceedings{view_geometry,
+  title={Elements of Computer Vision : Multiple View Geometry},
+  author={Andrea Fusiello},
+  year={2005},
+  url={https://api.semanticscholar.org/CorpusID:11746387}
 }
 
 
+@inproceedings{dba_filter,
+  title={DBA-Filter: A dynamic background activity noise filtering algorithm for event cameras},
+  author={Mohamed, Sherif AS and Yasin, Jawad N and Haghbayan, Mohammad-Hashem and Heikkonen, Jukka and Tenhunen, Hannu and Plosila, Juha},
+  booktitle={Intelligent Computing: Proceedings of the 2021 Computing Conference, Volume 1},
+  pages={685--696},
+  year={2022},
+  organization={Springer}
+}
 
-@manual{Alvis2011,
-	organization = {AGH University of Science and Technology},
-	year = {2011},
-	title = {{On Line Alvis Manual}},
-	note = {\\\texttt{http://fm.ia.agh.edu.pl/alvis:manual}},
-	author = {Szpyrka, M.},
+@article{RHT,
+title = {Randomized Hough Transform (RHT): Basic Mechanisms, Algorithms, and Computational Complexities},
+journal = {CVGIP: Image Understanding},
+volume = {57},
+number = {2},
+pages = {131-154},
+year = {1993},
+issn = {1049-9660},
+doi = {https://doi.org/10.1006/ciun.1993.1009},
+url = {https://www.sciencedirect.com/science/article/pii/S1049966083710090},
+author = {L. Xu and E. Oja},
+abstract = {Recently, a new curve detection approach called the randomized Hough transform (RHT) was heuristically proposed by the authors, inspired by the efforts of using neural computation learning techniques for curve detection. The preliminary experimental results and some qualitative analysis showed that in comparison with the Hough transform (HT) and its variants, the RHT has advantages of fast speed, small storage, infinite range of the parameter space, and high parameter resolution, and it can overcome several difficulties encountered with the HT methods. In this paper, the basic ideas of RHT are further developed into a more systematic and theoretically supported new method for curve detection. The fundamental framework and the main components of this method are elaborated. The advantages of RHT are further confirmed. The basic mechanisms behind these advantages are exposed by both theoretical analysis and detailed experimental demonstrations. The main differences between RHT and some related techniques are elucidated. This paper also proposes several improved algorithms for implementing RHT for curve detection problems in noisy images. They are tested by experiments on images with various kinds of strong noise. The results show that the advantages of RHT are quite robust. Moreover, the implementations of these algorithms are modeled by a generalized Bernoulli process, allowing probability analysis on these algorithms to estimate their computational complexities and to decide some important parameters for their implementations. It is shown quantitatively that the complexities are considerably smaller than those of the HT.}
+}
 
-	langid = {english},
+@inproceedings{Harris,
+  title={A Combined Corner and Edge Detector},
+  author={Christopher G. Harris and M. J. Stephens},
+  booktitle={Alvey Vision Conference},
+  year={1988},
+  url={https://api.semanticscholar.org/CorpusID:1694378}
+}
+
+@misc{v2e,
+      title={v2e: From Video Frames to Realistic DVS Events}, 
+      author={Yuhuang Hu and Shih-Chii Liu and Tobi Delbruck},
+      year={2021},
+      eprint={2006.07722},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2006.07722}, 
+}
+
+@inproceedings{sort,
+  author={Bewley, Alex and Ge, Zongyuan and Ott, Lionel and Ramos, Fabio and Upcroft, Ben},
+  booktitle={2016 IEEE International Conference on Image Processing (ICIP)},
+  title={Simple online and realtime tracking},
+  year={2016},
+  pages={3464-3468},
+  keywords={Benchmark testing;Complexity theory;Detectors;Kalman filters;Target tracking;Visualization;Computer Vision;Data Association;Detection;Multiple Object Tracking},
+  doi={10.1109/ICIP.2016.7533003}
+}
+
+@article{dvs_dataset,
+  author       = {Elias Mueggler and
+                  Henri Rebecq and
+                  Guillermo Gallego and
+                  Tobi Delbr{\"{u}}ck and
+                  Davide Scaramuzza},
+  title        = {The Event-Camera Dataset and Simulator: Event-based Data for Pose
+                  Estimation, Visual Odometry, and {SLAM}},
+  journal      = {CoRR},
+  volume       = {abs/1610.08336},
+  year         = {2016},
+  url          = {http://arxiv.org/abs/1610.08336},
+  eprinttype    = {arXiv},
+  eprint       = {1610.08336},
+  timestamp    = {Mon, 09 Nov 2020 15:07:12 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/MuegglerRGDS16.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@Article{ESIM,
+  author        = {Henri Rebecq and Daniel Gehrig and Davide Scaramuzza},
+  title         = {{ESIM}: an Open Event Camera Simulator},
+  journal       = {Conf. on Robotics Learning (CoRL)},
+  year          = 2018,
+  month         = oct
+}
+
+@misc{SuperSloMo,
+      title={Super SloMo: High Quality Estimation of Multiple Intermediate Frames for Video Interpolation}, 
+      author={Huaizu Jiang and Deqing Sun and Varun Jampani and Ming-Hsuan Yang and Erik Learned-Miller and Jan Kautz},
+      year={2018},
+      eprint={1712.00080},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1712.00080}, 
+}
+
+@inproceedings{Blachut_2023,
+   title={High-definition event frame generation using SoC FPGA devices},
+   url={http://dx.doi.org/10.23919/SPA59660.2023.10274447},
+   DOI={10.23919/spa59660.2023.10274447},
+   booktitle={2023 Signal Processing: Algorithms, Architectures, Arrangements, and Applications (SPA)},
+   publisher={IEEE},
+   author={Blachut, Krzysztof and Kryjak, Tomasz},
+   year={2023},
+   month=sep, pages={106–111} }
+
+
+@ARTICLE{denoising,
+  author={Guo, Shasha and Delbruck, Tobi},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Low Cost and Latency Event Camera Background Activity Denoising}, 
+  year={2023},
+  volume={45},
+  number={1},
+  pages={785-795},
+  keywords={Voltage control;Noise reduction;Cameras;Automobiles;Noise measurement;Brightness;Vision sensors;Dynamic vision sensor;background activity noise;denoising;hardware-friendly;ROC},
+  doi={10.1109/TPAMI.2022.3152999}}
+
+@misc{night_run,
+      title={Continuous-time Intensity Estimation Using Event Cameras}, 
+      author={Cedric Scheerlinck and Nick Barnes and Robert Mahony},
+      year={2018},
+      eprint={1811.00386},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1811.00386}, 
+}
+
+@Article{EMVS,
+  author        = {Henri Rebecq and Guillermo Gallego and Elias Mueggler and
+                  Davide Scaramuzza},
+  title         = {{EMVS}: Event-based Multi-View Stereo---{3D} Reconstruction
+                  with an Event Camera in Real-Time},
+  journal       = "Int. J. Comput. Vis.",
+  year          = 2018,
+  volume        = 126,
+  issue         = 12,
+  pages         = {1394--1414},
+  month         = dec,
+  doi           = {10.1007/s11263-017-1050-6}
+}
+
+@inproceedings{single_depth,
+  title={Real-Time 3D Reconstruction and 6-DoF Tracking with an Event Camera},
+  author={Hanme Kim and Stefan Leutenegger and Andrew J. Davison},
+  booktitle={European Conference on Computer Vision},
+  year={2016},
+  url={https://api.semanticscholar.org/CorpusID:26324573}
+}
+
+@article{dvs_survey,
+   title={Event-Based Vision: A Survey},
+   volume={44},
+   ISSN={1939-3539},
+   url={http://dx.doi.org/10.1109/TPAMI.2020.3008413},
+   DOI={10.1109/tpami.2020.3008413},
+   number={1},
+   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+   publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+   author={Gallego, Guillermo and Delbruck, Tobi and Orchard, Garrick and Bartolozzi, Chiara and Taba, Brian and Censi, Andrea and Leutenegger, Stefan and Davison, Andrew J. and Conradt, Jorg and Daniilidis, Kostas and Scaramuzza, Davide},
+   year={2022},
+   month=jan, pages={154–180} }
+
+@online{triangulation,
+  author = {Kris Kitani},
+  title = {Triangulation},
+  url = {http://www.cs.cmu.edu/~16385/s17/Slides/11.4_Triangulation.pdf},
+  urldate = {2025-01-09}
+}
+
+@online{detection_methods2,
+  author = {Rebecca Skantar},
+  title = {Obstacle Detection Methods},
+  url = {https://sites.tufts.edu/eeseniordesignhandbook/files/2022/05/Skantar_TechNotes.pdf},
+  urldate = {2025-01-11}
 }

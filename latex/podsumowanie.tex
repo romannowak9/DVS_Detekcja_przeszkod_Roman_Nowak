@@ -1,8 +1,73 @@
 \chapter{Podsumowanie}
 \label{cha:podsumowanie}
 
-\section{Efekty pracy i uzyskane wyniki}
-\label{sec:wyniki}
+% \section{Efekty pracy i uzyskane wyniki}
+% \label{sec:wyniki}
 
-\section{Wnioski}
-\label{sec:wnioski}
+%Podsumowanie - krótko co zostało zrobione
+W ramach pracy nad projektem wykonane zostały:
+\begin{itemize}
+    \item Przegląd literatury -- zapoznano się z metodami detekcji i~unikania przeszkód przy wykorzystaniu kamer zdarzeniowych. Przeanalizowano algorytmy wykrywania obiektów w~wybranych artykułach i~na tej podstawie stworzono własne podejście do problemu. Przeanalizowano publikacje pomocne w~jego realizacji.
+    \item Środowisko symulacyjne do testów SiL -- stworzono różne scenariusze testowe (sceny), umożliwiające sprawdzenie działania algorytmu w~dziennych lub nocnych warunkach na zróżnicowanych torach przeszkód. W środowisku umieszczono model drona, wyposażonego w~kamerę zdarzeniową i~rozwiązano problem sterowania nim.
+    \item Algorytm detekcji przeszkód -- zaprojektowany dzięki analizie literatury sposób działania algorytmu zaimplementowano w~języku programowania Python. Przeprowadzono wstępne próby jego działania na zbiorach danych pochodzących z~kamery zdarzeniowej DAVIS240. Używając \textit{frameworka} ROS2, przetestowano algorytm w~symulacji.
+\end{itemize}
+
+%Czego nie udało się zrobić
+
+\vspace{11px}
+Niestety, nie wszystkie cele wymienione w~rozdziale \ref{sec:celePracy} zostały osiągnięte. Z~powodu ograniczonego czasu oraz rozbudowanej formy projektu, nie udało się podjąć próby implementacji i~przetestowania rozwiązania w~formule \textit{Hardware in the Loop} na platformie wbudowanej.
+
+% \section{Wnioski}
+% \label{sec:wnioski}
+
+%Opis zalet i wad uzyskanego algorytmu
+Na podstawie testów systemu, przedstawionych i~opisanych w~rozdziale \ref{sec:algorytm_wyniki}, można zdefiniować jego cechy:
+\begin{itemize}
+    \item Algorytm dobrze radzi sobie w~ograniczonych warunkach oświetleniowych,
+    \item Błędy w działaniu algorytmu występują częściej w ograniczonych warunkach oświetleniowych. Zazwyczaj są to:
+    \begin{itemize}
+        \item Niewykrywanie obiektu na pojedynczych klatkach obrazu,
+        \item Wykrywanie tylko części przeszkody,
+        \item Wykrywanie jednego obiektu jako kilka mniejszych przeszkód.
+    \end{itemize}
+\end{itemize}
+
+Dzięki testom \textit{Software in the Loop}, możliwe było wykrycie wielu błędów i~ich naprawa na wczesnym etapie pracy nad systemem detekcji obiektów -- podczas implementacji modelu programowego.
+
+% Czemu to co nie działa nie działa i jak by to można zrobić lepiej
+W czasie testów SiL stwierdzony został poważny problem z~wartościami odległości do wykrytych obiektów zwracanymi przez algorytm. Niestety okazały się one na tyle niedokładne i~zawierały tyle błędów, że ich użycie do wyznaczania pozycji obiektów w~przestrzeni 3D oraz ich prędkości okazało się niemożliwe. Mimo podjętych prób naprawy, zachowując przyjęte podejście (triangulacja z~użyciem jednej kamery zdarzeniowej), nie udało się tego problemu rozwiązać.
+
+Możliwe przyczyny błędnego działania tej fazy algorytmu:
+\begin{itemize}
+    \item Niedokładne dane o~pozycji i~rotacji kamery,
+    \item Błędy w~dopasowywaniu punktów charakterystycznych,
+    \item Błędy w~procesie śledzenia obiektów,
+    \item Zbyt małe przemieszczenie drona między dwiema kolejnymi klatkami.
+\end{itemize}
+
+Ponieważ zastosowanie triangulacji w przypadku pojedynczej kamery okazało się błędnym podejściem, w~celu realizacji zadania rozpoznawania głębi, konieczna może okazać się zmiana metody. Proponowane rozwiązania:
+\begin{itemize}
+    \item Ograniczenie wykrywania do obiektów o~znanym rozmiarze -- znacznie zmniejszy to potencjalne zastosowania systemu, ale pozwoli na otrzymywanie danych o~głębi bez wyposażania drona w~dodatkowe czujniki.
+    \item Umieszczenie na dronie LiDAR-u, jako dodatkowego czujnika. W tym rozwiązaniu kamera zdarzeniowa pozwoli na skuteczniejsze wykrywanie obiektów, które szybko się poruszają oraz poprawi działanie w ciemności, a~LiDAR umożliwi zwiększenie dokładności oraz pozwoli na precyzyjne odczytywanie głębi. Minusem takiego rozwiązania jest wzrost ceny oraz stopnia skomplikowania systemu. Znacznie zwiększyłaby się złożoność obliczeniowa z~powodu dodatkowych danych do przetworzenia.
+    \item Zastosowanie dwóch kamer zdarzeniowych w~układzie stereo, dzięki czemu możliwe będzie przeprowadzenie triangulacji w poprawny i dokładny sposób.  % Dodatkowa masa drugiej kamery jako wada?
+    \item Wybór i zastosowanie w projekcie algorytmu estymacji głębi dedykowanego dla pojedynczych kamer zdarzeniowych. Takie rozwiązania można znaleźć w literaturze na przykład w artykułach \cite{EMVS} lub \cite{single_depth}. W porównaniu do prostej koncepcyjnie triangulacji, są to rozbudowane i bardziej złożone obliczeniowo systemy.
+\end{itemize}
+
+% \section{Plany rozwoju}
+% \label{sec:plany}
+
+% plany rozwoju na przyszłość, potencjalne aplikacje, w których można zastosować algorytm itp.
+
+\noindent Projekt ma szerokie możliwości dalszego rozwoju i~rozbudowy.
+
+W ramach dalszej pracy nad projektem planowane jest:
+\begin{itemize}
+    \item Rozwiązanie problemu otrzymywania poprawnych danych o~głębi,
+    \item Optymalizacja akumlacji zdarzeń do dalszego przetwarzania. Dwa podejścia do tego zagadnienia - zbieranie danych w pewnym przedziale czasowym oraz akumulacja pewnej ich liczby, można połączyć w jedno. Ten sposób pozwala na połączenie ich zalet i minimalizacje ich wad (odpowiednio możliwości wystąpienia rozmycia ruchu oraz za dużej do realizacji w czasie rzeczywistym częstotliwości ramek zdarzeniowych).
+    \item Zaimplementowanie algorytmu na wbudowanej platformie obliczeniowej -- eGPU Jetson i~przetestowanie jego działania metodą HiL,
+    \item Zaimplementowanie algorytmu na platformie z układem FPGA (ang. \textit{Field Programmable Gate Array}). Przeprowadzenie testów i~porównanie działania systemu uruchamianego na FPGA i~eGPU Jetson. FPGA jest platformą, która może okazać się najskuteczniejsza dla stworzonego algorytmu ze względu na szerokie możliwości zrównoleglania wykonywanych obliczeń, co w~przypadku systemów wizyjnych jest wyjątkowo efektywne.
+    \item Zaprojektowanie i~implementacja systemu sterowania dronem, tak by na podstawie danych otrzymywanych z~procesu detekcji, umożliwić unikanie przeszkód,
+    \item Zamontowanie systemu na rzeczywistym dronie i~przetestowanie go na przygotowanym torze przeszkód.
+\end{itemize}
+
+Mimo że algorytm detekcji testowany był z~wykorzystaniem czterowirnikowego drona, to może być zastosowany do wykrywania poruszających się względem kamery obiektów na innych rodzajach pojazdów i~wszelkich robotach mobilnych.
